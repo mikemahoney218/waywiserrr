@@ -112,186 +112,134 @@ print(
 #> # A tibble: 130 × 3
 #>     expression                                                     rows   median
 #>     <bch:expr>                                                    <dbl> <bch:tm>
-#>   1 waywiser::ww_agreement_coefficient(df, x, y)                    100    1.3ms
-#>   2 waywiserrr::ww_agreement_coefficient(df, x, y)                  100    1.3ms
-#>   3 waywiser::ww_systematic_agreement_coefficient(df, x, y)         100   1.36ms
-#>   4 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)       100   1.33ms
-#>   5 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)       100   1.37ms
-#>   6 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y)     100   1.32ms
-#>   7 waywiser::ww_unsystematic_mpd(df, x, y)                         100   1.35ms
-#>   8 waywiserrr::ww_unsystematic_mpd(df, x, y)                       100   1.33ms
-#>   9 waywiser::ww_systematic_mpd(df, x, y)                           100   1.37ms
-#>  10 waywiserrr::ww_systematic_mpd(df, x, y)                         100   1.32ms
-#>  11 waywiser::ww_unsystematic_rmpd(df, x, y)                        100   1.34ms
-#>  12 waywiserrr::ww_unsystematic_rmpd(df, x, y)                      100    1.3ms
-#>  13 waywiser::ww_systematic_rmpd(df, x, y)                          100   1.33ms
-#>  14 waywiserrr::ww_systematic_rmpd(df, x, y)                        100   1.31ms
-#>  15 waywiser::ww_willmott_d(df, x, y)                               100   1.29ms
-#>  16 waywiserrr::ww_willmott_d(df, x, y)                             100    1.3ms
-#>  17 waywiser::ww_willmott_d1(df, x, y)                              100   1.26ms
-#>  18 waywiserrr::ww_willmott_d1(df, x, y)                            100   1.28ms
-#>  19 waywiser::ww_willmott_dr(df, x, y)                              100   1.26ms
-#>  20 waywiserrr::ww_willmott_dr(df, x, y)                            100   1.22ms
-#>  21 waywiser::ww_systematic_mse(df, x, y)                           100   2.03ms
-#>  22 waywiserrr::ww_systematic_mse(df, x, y)                         100   1.96ms
-#>  23 waywiser::ww_unsystematic_mse(df, x, y)                         100   1.88ms
-#>  24 waywiserrr::ww_unsystematic_mse(df, x, y)                       100   1.91ms
-#>  25 waywiser::ww_unsystematic_rmse(df, x, y)                        100   1.94ms
-#>  26 waywiserrr::ww_unsystematic_rmse(df, x, y)                      100    1.9ms
-#>  27 waywiser::ww_agreement_coefficient(df, x, y)                   1000   1.26ms
-#>  28 waywiserrr::ww_agreement_coefficient(df, x, y)                 1000   1.27ms
-#>  29 waywiser::ww_systematic_agreement_coefficient(df, x, y)        1000   1.41ms
-#>  30 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)      1000   1.33ms
-#>  31 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)      1000   1.36ms
-#>  32 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y)    1000   1.36ms
-#>  33 waywiser::ww_unsystematic_mpd(df, x, y)                        1000   1.34ms
-#>  34 waywiserrr::ww_unsystematic_mpd(df, x, y)                      1000    1.3ms
-#>  35 waywiser::ww_systematic_mpd(df, x, y)                          1000   1.36ms
-#>  36 waywiserrr::ww_systematic_mpd(df, x, y)                        1000   1.31ms
-#>  37 waywiser::ww_unsystematic_rmpd(df, x, y)                       1000   1.44ms
-#>  38 waywiserrr::ww_unsystematic_rmpd(df, x, y)                     1000   1.31ms
-#>  39 waywiser::ww_systematic_rmpd(df, x, y)                         1000   1.39ms
-#>  40 waywiserrr::ww_systematic_rmpd(df, x, y)                       1000   1.31ms
-#>  41 waywiser::ww_willmott_d(df, x, y)                              1000   1.24ms
-#>  42 waywiserrr::ww_willmott_d(df, x, y)                            1000   1.25ms
-#>  43 waywiser::ww_willmott_d1(df, x, y)                             1000   1.25ms
-#>  44 waywiserrr::ww_willmott_d1(df, x, y)                           1000   1.32ms
-#>  45 waywiser::ww_willmott_dr(df, x, y)                             1000   1.24ms
-#>  46 waywiserrr::ww_willmott_dr(df, x, y)                           1000   1.24ms
-#>  47 waywiser::ww_systematic_mse(df, x, y)                          1000   1.95ms
-#>  48 waywiserrr::ww_systematic_mse(df, x, y)                        1000   1.94ms
-#>  49 waywiser::ww_unsystematic_mse(df, x, y)                        1000   1.97ms
-#>  50 waywiserrr::ww_unsystematic_mse(df, x, y)                      1000   2.01ms
-#>  51 waywiser::ww_unsystematic_rmse(df, x, y)                       1000   2.01ms
-#>  52 waywiserrr::ww_unsystematic_rmse(df, x, y)                     1000   1.96ms
-#>  53 waywiser::ww_agreement_coefficient(df, x, y)                  10000   1.45ms
-#>  54 waywiserrr::ww_agreement_coefficient(df, x, y)                10000   1.46ms
-#>  55 waywiser::ww_systematic_agreement_coefficient(df, x, y)       10000   2.13ms
-#>  56 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)     10000   1.61ms
-#>  57 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)     10000   2.08ms
-#>  58 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y)   10000   1.61ms
-#>  59 waywiser::ww_unsystematic_mpd(df, x, y)                       10000   1.93ms
-#>  60 waywiserrr::ww_unsystematic_mpd(df, x, y)                     10000   1.51ms
-#>  61 waywiser::ww_systematic_mpd(df, x, y)                         10000   1.92ms
-#>  62 waywiserrr::ww_systematic_mpd(df, x, y)                       10000    1.5ms
-#>  63 waywiser::ww_unsystematic_rmpd(df, x, y)                      10000   1.92ms
-#>  64 waywiserrr::ww_unsystematic_rmpd(df, x, y)                    10000   1.55ms
-#>  65 waywiser::ww_systematic_rmpd(df, x, y)                        10000   1.94ms
-#>  66 waywiserrr::ww_systematic_rmpd(df, x, y)                      10000   1.51ms
-#>  67 waywiser::ww_willmott_d(df, x, y)                             10000   1.45ms
-#>  68 waywiserrr::ww_willmott_d(df, x, y)                           10000   1.44ms
-#>  69 waywiser::ww_willmott_d1(df, x, y)                            10000   1.47ms
-#>  70 waywiserrr::ww_willmott_d1(df, x, y)                          10000   1.49ms
-#>  71 waywiser::ww_willmott_dr(df, x, y)                            10000   1.43ms
-#>  72 waywiserrr::ww_willmott_dr(df, x, y)                          10000   1.44ms
-#>  73 waywiser::ww_systematic_mse(df, x, y)                         10000   2.61ms
-#>  74 waywiserrr::ww_systematic_mse(df, x, y)                       10000    2.6ms
-#>  75 waywiser::ww_unsystematic_mse(df, x, y)                       10000    2.6ms
-#>  76 waywiserrr::ww_unsystematic_mse(df, x, y)                     10000   2.61ms
-#>  77 waywiser::ww_unsystematic_rmse(df, x, y)                      10000   2.58ms
-#>  78 waywiserrr::ww_unsystematic_rmse(df, x, y)                    10000   2.71ms
-#>  79 waywiser::ww_agreement_coefficient(df, x, y)                 100000   3.57ms
-#>  80 waywiserrr::ww_agreement_coefficient(df, x, y)               100000   2.67ms
-#>  81 waywiser::ww_systematic_agreement_coefficient(df, x, y)      100000   9.27ms
-#>  82 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)    100000   4.75ms
-#>  83 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)    100000   9.14ms
-#>  84 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y)  100000   4.34ms
-#>  85 waywiser::ww_unsystematic_mpd(df, x, y)                      100000   8.14ms
-#>  86 waywiserrr::ww_unsystematic_mpd(df, x, y)                    100000   4.13ms
-#>  87 waywiser::ww_systematic_mpd(df, x, y)                        100000   8.17ms
-#>  88 waywiserrr::ww_systematic_mpd(df, x, y)                      100000   4.37ms
-#>  89 waywiser::ww_unsystematic_rmpd(df, x, y)                     100000   7.92ms
-#>  90 waywiserrr::ww_unsystematic_rmpd(df, x, y)                   100000   4.16ms
-#>  91 waywiser::ww_systematic_rmpd(df, x, y)                       100000   8.81ms
-#>  92 waywiserrr::ww_systematic_rmpd(df, x, y)                     100000   4.39ms
-#>  93 waywiser::ww_willmott_d(df, x, y)                            100000   3.47ms
-#>  94 waywiserrr::ww_willmott_d(df, x, y)                          100000   3.39ms
-#>  95 waywiser::ww_willmott_d1(df, x, y)                           100000   3.45ms
-#>  96 waywiserrr::ww_willmott_d1(df, x, y)                         100000   3.46ms
-#>  97 waywiser::ww_willmott_dr(df, x, y)                           100000   2.89ms
-#>  98 waywiserrr::ww_willmott_dr(df, x, y)                         100000   2.98ms
-#>  99 waywiser::ww_systematic_mse(df, x, y)                        100000  15.96ms
-#> 100 waywiserrr::ww_systematic_mse(df, x, y)                      100000  15.72ms
-#> 101 waywiser::ww_unsystematic_mse(df, x, y)                      100000  15.78ms
-#> 102 waywiserrr::ww_unsystematic_mse(df, x, y)                    100000  15.76ms
-#> 103 waywiser::ww_unsystematic_rmse(df, x, y)                     100000  15.44ms
-#> 104 waywiserrr::ww_unsystematic_rmse(df, x, y)                   100000  15.86ms
-#> 105 waywiser::ww_agreement_coefficient(df, x, y)                1000000  26.92ms
-#> 106 waywiserrr::ww_agreement_coefficient(df, x, y)              1000000  24.58ms
-#> 107 waywiser::ww_systematic_agreement_coefficient(df, x, y)     1000000  91.79ms
-#> 108 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)   1000000  64.51ms
-#> 109 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)   1000000  84.15ms
-#> 110 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y) 1000000  48.27ms
-#> 111 waywiser::ww_unsystematic_mpd(df, x, y)                     1000000   77.5ms
-#> 112 waywiserrr::ww_unsystematic_mpd(df, x, y)                   1000000  43.45ms
-#> 113 waywiser::ww_systematic_mpd(df, x, y)                       1000000  77.03ms
-#> 114 waywiserrr::ww_systematic_mpd(df, x, y)                     1000000   53.9ms
-#> 115 waywiser::ww_unsystematic_rmpd(df, x, y)                    1000000  74.52ms
-#> 116 waywiserrr::ww_unsystematic_rmpd(df, x, y)                  1000000  54.81ms
-#> 117 waywiser::ww_systematic_rmpd(df, x, y)                      1000000     92ms
-#> 118 waywiserrr::ww_systematic_rmpd(df, x, y)                    1000000  54.62ms
-#> 119 waywiser::ww_willmott_d(df, x, y)                           1000000  31.17ms
-#> 120 waywiserrr::ww_willmott_d(df, x, y)                         1000000  29.76ms
-#> 121 waywiser::ww_willmott_d1(df, x, y)                          1000000  29.53ms
-#> 122 waywiserrr::ww_willmott_d1(df, x, y)                        1000000  32.71ms
-#> 123 waywiser::ww_willmott_dr(df, x, y)                          1000000  22.94ms
-#> 124 waywiserrr::ww_willmott_dr(df, x, y)                        1000000  23.18ms
-#> 125 waywiser::ww_systematic_mse(df, x, y)                       1000000 159.98ms
-#> 126 waywiserrr::ww_systematic_mse(df, x, y)                     1000000 154.98ms
-#> 127 waywiser::ww_unsystematic_mse(df, x, y)                     1000000 156.19ms
-#> 128 waywiserrr::ww_unsystematic_mse(df, x, y)                   1000000 154.57ms
-#> 129 waywiser::ww_unsystematic_rmse(df, x, y)                    1000000 158.44ms
-#> 130 waywiserrr::ww_unsystematic_rmse(df, x, y)                  1000000 157.33ms
-
-# waywiser::ww_area_of_applicability()
-# # & predict
-# 
-# waywiser::ww_multi_scale()
-# 
-# waywiser::ww_global_moran_i()
-# 
-# waywiser::ww_global_moran_pvalue()
-# 
-# waywiser::ww_local_moran_i()
-# 
-# waywiser::ww_local_moran_pvalue()
-# 
-# waywiser::ww_global_geary_c()
-# 
-# waywiser::ww_global_geary_pvalue()
-# 
-# waywiser::ww_local_geary_c()
-# 
-# waywiser::ww_local_geary_pvalue()
-# 
-# waywiser::ww_local_getis_ord_g()
-# 
-# waywiser::ww_local_getis_ord_g_pvalue()
-#
-# waywiser::ww_build_neighbors()
-# 
-# waywiser::ww_build_weights()
-# 
-# waywiser::ww_make_point_neighbors()
-# 
-# waywiser::ww_make_polygon_neighbors()
+#>   1 waywiser::ww_agreement_coefficient(df, x, y)                    100  684.5µs
+#>   2 waywiserrr::ww_agreement_coefficient(df, x, y)                  100 690.48µs
+#>   3 waywiser::ww_systematic_agreement_coefficient(df, x, y)         100 740.38µs
+#>   4 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)       100 718.57µs
+#>   5 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)       100 732.42µs
+#>   6 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y)     100 699.91µs
+#>   7 waywiser::ww_unsystematic_mpd(df, x, y)                         100 724.59µs
+#>   8 waywiserrr::ww_unsystematic_mpd(df, x, y)                       100  701.3µs
+#>   9 waywiser::ww_systematic_mpd(df, x, y)                           100 724.92µs
+#>  10 waywiserrr::ww_systematic_mpd(df, x, y)                         100  703.6µs
+#>  11 waywiser::ww_unsystematic_rmpd(df, x, y)                        100 724.82µs
+#>  12 waywiserrr::ww_unsystematic_rmpd(df, x, y)                      100 697.92µs
+#>  13 waywiser::ww_systematic_rmpd(df, x, y)                          100 726.64µs
+#>  14 waywiserrr::ww_systematic_rmpd(df, x, y)                        100 698.27µs
+#>  15 waywiser::ww_willmott_d(df, x, y)                               100 686.91µs
+#>  16 waywiserrr::ww_willmott_d(df, x, y)                             100 687.98µs
+#>  17 waywiser::ww_willmott_d1(df, x, y)                              100 685.11µs
+#>  18 waywiserrr::ww_willmott_d1(df, x, y)                            100 700.01µs
+#>  19 waywiser::ww_willmott_dr(df, x, y)                              100 704.54µs
+#>  20 waywiserrr::ww_willmott_dr(df, x, y)                            100 693.68µs
+#>  21 waywiser::ww_systematic_mse(df, x, y)                           100   1.17ms
+#>  22 waywiserrr::ww_systematic_mse(df, x, y)                         100   1.14ms
+#>  23 waywiser::ww_unsystematic_mse(df, x, y)                         100   1.15ms
+#>  24 waywiserrr::ww_unsystematic_mse(df, x, y)                       100   1.14ms
+#>  25 waywiser::ww_unsystematic_rmse(df, x, y)                        100   1.12ms
+#>  26 waywiserrr::ww_unsystematic_rmse(df, x, y)                      100   1.15ms
+#>  27 waywiser::ww_agreement_coefficient(df, x, y)                   1000 736.69µs
+#>  28 waywiserrr::ww_agreement_coefficient(df, x, y)                 1000 726.81µs
+#>  29 waywiser::ww_systematic_agreement_coefficient(df, x, y)        1000 800.52µs
+#>  30 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)      1000 728.41µs
+#>  31 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)      1000  779.9µs
+#>  32 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y)    1000 713.85µs
+#>  33 waywiser::ww_unsystematic_mpd(df, x, y)                        1000  766.6µs
+#>  34 waywiserrr::ww_unsystematic_mpd(df, x, y)                      1000 715.14µs
+#>  35 waywiser::ww_systematic_mpd(df, x, y)                          1000 773.75µs
+#>  36 waywiserrr::ww_systematic_mpd(df, x, y)                        1000 717.29µs
+#>  37 waywiser::ww_unsystematic_rmpd(df, x, y)                       1000 768.26µs
+#>  38 waywiserrr::ww_unsystematic_rmpd(df, x, y)                     1000 731.75µs
+#>  39 waywiser::ww_systematic_rmpd(df, x, y)                         1000 816.62µs
+#>  40 waywiserrr::ww_systematic_rmpd(df, x, y)                       1000 726.97µs
+#>  41 waywiser::ww_willmott_d(df, x, y)                              1000 713.15µs
+#>  42 waywiserrr::ww_willmott_d(df, x, y)                            1000 712.09µs
+#>  43 waywiser::ww_willmott_d1(df, x, y)                             1000 749.85µs
+#>  44 waywiserrr::ww_willmott_d1(df, x, y)                           1000 744.31µs
+#>  45 waywiser::ww_willmott_dr(df, x, y)                             1000 708.23µs
+#>  46 waywiserrr::ww_willmott_dr(df, x, y)                           1000 728.98µs
+#>  47 waywiser::ww_systematic_mse(df, x, y)                          1000   1.18ms
+#>  48 waywiserrr::ww_systematic_mse(df, x, y)                        1000   1.18ms
+#>  49 waywiser::ww_unsystematic_mse(df, x, y)                        1000   1.19ms
+#>  50 waywiserrr::ww_unsystematic_mse(df, x, y)                      1000   1.18ms
+#>  51 waywiser::ww_unsystematic_rmse(df, x, y)                       1000   1.23ms
+#>  52 waywiserrr::ww_unsystematic_rmse(df, x, y)                     1000   1.21ms
+#>  53 waywiser::ww_agreement_coefficient(df, x, y)                  10000 933.45µs
+#>  54 waywiserrr::ww_agreement_coefficient(df, x, y)                10000 840.56µs
+#>  55 waywiser::ww_systematic_agreement_coefficient(df, x, y)       10000   1.35ms
+#>  56 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)     10000 969.24µs
+#>  57 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)     10000   1.31ms
+#>  58 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y)   10000 951.28µs
+#>  59 waywiser::ww_unsystematic_mpd(df, x, y)                       10000   1.26ms
+#>  60 waywiserrr::ww_unsystematic_mpd(df, x, y)                     10000    1.1ms
+#>  61 waywiser::ww_systematic_mpd(df, x, y)                         10000   1.31ms
+#>  62 waywiserrr::ww_systematic_mpd(df, x, y)                       10000   1.03ms
+#>  63 waywiser::ww_unsystematic_rmpd(df, x, y)                      10000   1.23ms
+#>  64 waywiserrr::ww_unsystematic_rmpd(df, x, y)                    10000 988.14µs
+#>  65 waywiser::ww_systematic_rmpd(df, x, y)                        10000   1.26ms
+#>  66 waywiserrr::ww_systematic_rmpd(df, x, y)                      10000  953.5µs
+#>  67 waywiser::ww_willmott_d(df, x, y)                             10000 897.24µs
+#>  68 waywiserrr::ww_willmott_d(df, x, y)                           10000 902.53µs
+#>  69 waywiser::ww_willmott_d1(df, x, y)                            10000 894.87µs
+#>  70 waywiserrr::ww_willmott_d1(df, x, y)                          10000 888.43µs
+#>  71 waywiser::ww_willmott_dr(df, x, y)                            10000 855.05µs
+#>  72 waywiserrr::ww_willmott_dr(df, x, y)                          10000 854.58µs
+#>  73 waywiser::ww_systematic_mse(df, x, y)                         10000   1.82ms
+#>  74 waywiserrr::ww_systematic_mse(df, x, y)                       10000   1.84ms
+#>  75 waywiser::ww_unsystematic_mse(df, x, y)                       10000   1.83ms
+#>  76 waywiserrr::ww_unsystematic_mse(df, x, y)                     10000   1.83ms
+#>  77 waywiser::ww_unsystematic_rmse(df, x, y)                      10000   1.83ms
+#>  78 waywiserrr::ww_unsystematic_rmse(df, x, y)                    10000   1.82ms
+#>  79 waywiser::ww_agreement_coefficient(df, x, y)                 100000   2.75ms
+#>  80 waywiserrr::ww_agreement_coefficient(df, x, y)               100000   2.06ms
+#>  81 waywiser::ww_systematic_agreement_coefficient(df, x, y)      100000   6.71ms
+#>  82 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)    100000   3.32ms
+#>  83 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)    100000   6.56ms
+#>  84 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y)  100000   3.35ms
+#>  85 waywiser::ww_unsystematic_mpd(df, x, y)                      100000    5.7ms
+#>  86 waywiserrr::ww_unsystematic_mpd(df, x, y)                    100000   3.01ms
+#>  87 waywiser::ww_systematic_mpd(df, x, y)                        100000   5.98ms
+#>  88 waywiserrr::ww_systematic_mpd(df, x, y)                      100000    3.1ms
+#>  89 waywiser::ww_unsystematic_rmpd(df, x, y)                     100000   5.68ms
+#>  90 waywiserrr::ww_unsystematic_rmpd(df, x, y)                   100000   2.99ms
+#>  91 waywiser::ww_systematic_rmpd(df, x, y)                       100000   5.95ms
+#>  92 waywiserrr::ww_systematic_rmpd(df, x, y)                     100000   3.15ms
+#>  93 waywiser::ww_willmott_d(df, x, y)                            100000    2.7ms
+#>  94 waywiserrr::ww_willmott_d(df, x, y)                          100000   2.56ms
+#>  95 waywiser::ww_willmott_d1(df, x, y)                           100000   2.66ms
+#>  96 waywiserrr::ww_willmott_d1(df, x, y)                         100000   2.68ms
+#>  97 waywiser::ww_willmott_dr(df, x, y)                           100000   2.37ms
+#>  98 waywiserrr::ww_willmott_dr(df, x, y)                         100000   2.36ms
+#>  99 waywiser::ww_systematic_mse(df, x, y)                        100000  13.31ms
+#> 100 waywiserrr::ww_systematic_mse(df, x, y)                      100000  13.31ms
+#> 101 waywiser::ww_unsystematic_mse(df, x, y)                      100000  13.17ms
+#> 102 waywiserrr::ww_unsystematic_mse(df, x, y)                    100000   13.2ms
+#> 103 waywiser::ww_unsystematic_rmse(df, x, y)                     100000  13.46ms
+#> 104 waywiserrr::ww_unsystematic_rmse(df, x, y)                   100000  13.45ms
+#> 105 waywiser::ww_agreement_coefficient(df, x, y)                1000000  22.61ms
+#> 106 waywiserrr::ww_agreement_coefficient(df, x, y)              1000000  16.12ms
+#> 107 waywiser::ww_systematic_agreement_coefficient(df, x, y)     1000000  65.13ms
+#> 108 waywiserrr::ww_systematic_agreement_coefficient(df, x, y)   1000000  30.31ms
+#> 109 waywiser::ww_unsystematic_agreement_coefficient(df, x, y)   1000000  63.33ms
+#> 110 waywiserrr::ww_unsystematic_agreement_coefficient(df, x, y) 1000000   30.7ms
+#> 111 waywiser::ww_unsystematic_mpd(df, x, y)                     1000000  52.22ms
+#> 112 waywiserrr::ww_unsystematic_mpd(df, x, y)                   1000000  30.66ms
+#> 113 waywiser::ww_systematic_mpd(df, x, y)                       1000000  54.98ms
+#> 114 waywiserrr::ww_systematic_mpd(df, x, y)                     1000000  27.69ms
+#> 115 waywiser::ww_unsystematic_rmpd(df, x, y)                    1000000  53.91ms
+#> 116 waywiserrr::ww_unsystematic_rmpd(df, x, y)                  1000000  29.01ms
+#> 117 waywiser::ww_systematic_rmpd(df, x, y)                      1000000  53.61ms
+#> 118 waywiserrr::ww_systematic_rmpd(df, x, y)                    1000000  29.49ms
+#> 119 waywiser::ww_willmott_d(df, x, y)                           1000000  23.11ms
+#> 120 waywiserrr::ww_willmott_d(df, x, y)                         1000000   22.4ms
+#> 121 waywiser::ww_willmott_d1(df, x, y)                          1000000  22.42ms
+#> 122 waywiserrr::ww_willmott_d1(df, x, y)                        1000000  22.17ms
+#> 123 waywiser::ww_willmott_dr(df, x, y)                          1000000  20.34ms
+#> 124 waywiserrr::ww_willmott_dr(df, x, y)                        1000000  19.43ms
+#> 125 waywiser::ww_systematic_mse(df, x, y)                       1000000 108.22ms
+#> 126 waywiserrr::ww_systematic_mse(df, x, y)                     1000000 105.34ms
+#> 127 waywiser::ww_unsystematic_mse(df, x, y)                     1000000 108.27ms
+#> 128 waywiserrr::ww_unsystematic_mse(df, x, y)                   1000000 108.32ms
+#> 129 waywiser::ww_unsystematic_rmse(df, x, y)                    1000000 109.95ms
+#> 130 waywiserrr::ww_unsystematic_rmse(df, x, y)                  1000000 106.45ms
 ```
-
-See `citation("waywiser")` for the most up-to-date citation information.
-
-## Contributing
-
-Please note that this package is released with a [Contributor Code of
-Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
-project, you agree to abide by its terms.
-
-- If you think you have encountered a bug, please [submit an
-  issue](https://github.com/ropensci/waywiser).
-
-- Please include a
-  [reprex](https://reprex.tidyverse.org/articles/articles/learn-reprex.html)
-  (a minimal, reproducible example) to clearly communicate about your
-  code.
-
-[![ropensci_footer](https://ropensci.org/public_images/github_footer.png)](https://ropensci.org)
-\>\>\>\>\>\>\> 8057a9b48cc5043bea752cbc9a494ea7ba509e23

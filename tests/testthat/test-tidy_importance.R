@@ -3,11 +3,17 @@ test_that("tidy_importance is idempotent", {
   skip_if_not(rlang::is_installed("vip"))
   train <- vip::gen_friedman(1000, seed = 101)
   pp <- ppr(y ~ ., data = train, nterms = 11)
+  metric_name <- ifelse(
+    packageVersion("vip") > package_version("0.3.2"),
+    "rsq",
+    "rsquared"
+  )
   importance <- vip::vi_permute(
     pp,
     target = "y",
-    metric = "rsquared",
-    pred_wrapper = predict
+    metric = metric_name,
+    pred_wrapper = predict,
+    train = train
   )
 
   expect_identical(

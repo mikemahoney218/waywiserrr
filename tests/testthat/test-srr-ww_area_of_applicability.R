@@ -10,11 +10,18 @@ comb_rset_no_y <- rsample::make_splits(train[2:11], test[2:11])
 comb_rset_no_y <- rsample::manual_rset(list(comb_rset_no_y), "Fold1")
 
 pp <- ppr(y ~ ., data = train, nterms = 11)
+metric_name <- ifelse(
+  packageVersion("vip") > package_version("0.3.2"),
+  "rsq",
+  "rsquared"
+)
+
 importance <- vip::vi_permute(
   pp,
   target = "y",
-  metric = "rsquared",
-  pred_wrapper = predict
+  metric = metric_name,
+  pred_wrapper = predict,
+  train = train
 )
 
 test_that("srr: expected failures for ww_area_of_applicability", {
