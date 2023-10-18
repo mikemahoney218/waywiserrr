@@ -51,11 +51,8 @@ Depends:
     R (>= 4.0)
 Imports: 
     dplyr (>= 1.1.0),
-    fields,
-    FNN,
     glue,
     hardhat,
-    Matrix,
     purrr,
     rlang (>= 1.1.0),
     sf (>= 1.0-0),

@@ -17,6 +17,45 @@ fn d_bar(a: ArrayView2<f64>) -> f64 {
     out.iter().sum::<f64>() / out.len() as f64
 }
 
+// Find minimum distance between two (different!) data sets
+#[extendr]
+fn min_dists_two_sets(source: ArrayView2<f64>, query: ArrayView2<f64>) -> Vec<f64> {
+    let source_nrow = source.nrows();
+    let query_nrow = query.nrows();
+    let mut out = Vec::<f64>::with_capacity(query_nrow);
+
+    for x in 0..query_nrow {
+        let mut dists = Vec::<f64>::with_capacity(source_nrow);
+        for y in 0..source_nrow {
+            let z = query.slice(s![x, ..]).l2_dist(&source.slice(s![y, ..])).unwrap();
+            dists.push(z);
+        }
+        out.push(dists.iter().cloned().fold(f64::INFINITY, f64::min));
+    }
+    out
+}
+
+// Find minimum distance between two (different!) data sets
+#[extendr]
+fn min_dists_one_set(source: ArrayView2<f64>) -> Vec<f64> {
+    let source_nrow = source.nrows();
+    let mut out = Vec::<f64>::with_capacity(source_nrow);
+
+    for x in 0..source_nrow {
+        let mut dists = Vec::<f64>::with_capacity(source_nrow);
+        for y in 0..source_nrow {
+            if x == y {
+              dists.push(f64::INFINITY);
+            } else {
+              let z = source.slice(s![x, ..]).l2_dist(&source.slice(s![y, ..])).unwrap();
+              dists.push(z);
+            }
+        }
+        out.push(dists.iter().cloned().fold(f64::INFINITY, f64::min));
+    }
+    out
+}
+
 // Calculate geometric mean functional relationship parameters
 #[extendr]
 fn gmfr_rust(truth: ArrayView1<f64>, estimate: ArrayView1<f64>, corsign: i8) -> [f64; 2] {
@@ -81,4 +120,6 @@ extendr_module! {
     fn spod_rust;
     fn spdu_rust;
     fn spds_rust;
+    fn min_dists_one_set;
+    fn min_dists_two_sets;
 }

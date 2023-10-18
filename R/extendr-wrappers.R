@@ -23,5 +23,9 @@ spdu_rust <- function(truth, estimate, corsign) .Call(wrap__spdu_rust, truth, es
 
 spds_rust <- function(truth, estimate, corsign) .Call(wrap__spds_rust, truth, estimate, corsign)
 
+min_dists_one_set <- function(source) .Call(wrap__min_dists_one_set, source)
+
+min_dists_two_sets <- function(source, query) .Call(wrap__min_dists_two_sets, source, query)
+
 
 # nolint end
