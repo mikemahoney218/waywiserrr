@@ -1,7 +1,7 @@
 //use extendr_api::prelude::*;
 use extendr_api::{extendr, extendr_module};
 use ndarray::{ArrayView1, ArrayView2, indices_of, Array2, s, par_azip, Axis};
-use ndarray::parallel::prelude::*;
+//use ndarray::parallel::prelude::*;
 use ndarray_stats::{DeviationExt};
 
 // Calculate Euclidean distance matrix
@@ -37,7 +37,7 @@ fn min_dists(
     let mut diag = dists.diag_mut();
     diag.fill(f64::INFINITY);
   }
-  dists.map_axis(Axis(1), |view| view.into_par_iter().min_by(|a, b| a.partial_cmp(b).unwrap()).unwrap().to_owned()).to_vec()
+  dists.fold_axis(Axis(1), f64::INFINITY, |&a, &b| f64::min(a, b)).to_vec()
 }
 
 // Calculate geometric mean functional relationship parameters
