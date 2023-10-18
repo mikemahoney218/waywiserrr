@@ -1,59 +1,43 @@
-use extendr_api::prelude::*;
+//use extendr_api::prelude::*;
+use extendr_api::{extendr, extendr_module};
+use ndarray::{ArrayView1, ArrayView2, indices_of, Array2, s, par_azip, Axis};
+use ndarray::parallel::prelude::*;
 use ndarray_stats::{DeviationExt};
 
 // Calculate Euclidean distance matrix
 #[extendr]
 fn d_bar(a: ArrayView2<f64>) -> f64 {
-    let nrow = a.nrows();
-    let outsize = nrow * (nrow - 1) / 2;
-    let mut out = Vec::<f64>::with_capacity(outsize);
-
-    for x in 0..(nrow - 1) {
-        for y in (x + 1)..nrow {
-            let z = a.slice(s![x, ..]).l2_dist(&a.slice(s![y, ..])).unwrap();
-            out.push(z);
-        }
-    }
-    out.iter().sum::<f64>() / out.len() as f64
+    let dists = distmat(&a, &a);
+    // mean of the distance matrix after dropping 0s
+    (dists.sum() as f64) / ((dists.nrows() * dists.nrows() - dists.nrows()) as f64)
 }
 
-// Find minimum distance between two (different!) data sets
-#[extendr]
-fn min_dists_two_sets(source: ArrayView2<f64>, query: ArrayView2<f64>) -> Vec<f64> {
-    let source_nrow = source.nrows();
-    let query_nrow = query.nrows();
-    let mut out = Vec::<f64>::with_capacity(query_nrow);
-
-    for x in 0..query_nrow {
-        let mut dists = Vec::<f64>::with_capacity(source_nrow);
-        for y in 0..source_nrow {
-            let z = query.slice(s![x, ..]).l2_dist(&source.slice(s![y, ..])).unwrap();
-            dists.push(z);
-        }
-        out.push(dists.iter().cloned().fold(f64::INFINITY, f64::min));
-    }
-    out
+fn distmat(
+    data: &ArrayView2<f64>,
+    query: &ArrayView2<f64>,
+) -> Array2<f64> {
+    let mut distances = Array2::zeros((query.nrows(), data.nrows()));
+    let idx = indices_of(&distances);
+    let func = |i: usize, j: usize| -> f64 {
+        query.slice(s![i, ..]).l2_dist(&data.slice(s![j, ..])).unwrap()
+    };
+    par_azip!((c in &mut distances, (i,j) in idx){*c = func(i,j)});
+    return distances
 }
 
-// Find minimum distance between two (different!) data sets
+// Find minimum distance between two data sets
 #[extendr]
-fn min_dists_one_set(source: ArrayView2<f64>) -> Vec<f64> {
-    let source_nrow = source.nrows();
-    let mut out = Vec::<f64>::with_capacity(source_nrow);
-
-    for x in 0..source_nrow {
-        let mut dists = Vec::<f64>::with_capacity(source_nrow);
-        for y in 0..source_nrow {
-            if x == y {
-              dists.push(f64::INFINITY);
-            } else {
-              let z = source.slice(s![x, ..]).l2_dist(&source.slice(s![y, ..])).unwrap();
-              dists.push(z);
-            }
-        }
-        out.push(dists.iter().cloned().fold(f64::INFINITY, f64::min));
-    }
-    out
+fn min_dists(
+    data: ArrayView2<f64>,
+    query: ArrayView2<f64>,
+    distinct: bool,
+) -> Vec<f64> {
+  let mut dists = distmat(&data, &query);
+  if !distinct {
+    let mut diag = dists.diag_mut();
+    diag.fill(f64::INFINITY);
+  }
+  dists.map_axis(Axis(1), |view| view.into_par_iter().min_by(|a, b| a.partial_cmp(b).unwrap()).unwrap().to_owned()).to_vec()
 }
 
 // Calculate geometric mean functional relationship parameters
@@ -120,6 +104,5 @@ extendr_module! {
     fn spod_rust;
     fn spdu_rust;
     fn spds_rust;
-    fn min_dists_one_set;
-    fn min_dists_two_sets;
+    fn min_dists;
 }

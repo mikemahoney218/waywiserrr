@@ -111,4 +111,5 @@ Collate:
     'multi_scale.R'
     'tidy_importance.R'
     'willmott_d.R'
+    'zzz.R'
 Config/rextendr/version: 0.3.1

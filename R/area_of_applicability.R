@@ -564,9 +564,10 @@ calc_di <- function(training, testing, d_bar) {
   # (or `training`, if `testing` is `NULL`)
   # to the closest point in the training set
   if (is.null(testing)) {
-    dk <- min_dists_one_set(as.matrix(training))
+    train_mat <- as.matrix(training)
+    dk <- min_dists(train_mat, train_mat, FALSE)
   } else {
-    dk <- min_dists_two_sets(as.matrix(training), as.matrix(testing))
+    dk <- min_dists(as.matrix(training), as.matrix(testing), TRUE)
   }
 
   # Use d_bar to rescale dk from 2.3
