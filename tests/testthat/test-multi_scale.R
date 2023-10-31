@@ -433,7 +433,6 @@ test_that("raster method works", {
     )$.estimate,
     1
   )
-
 })
 
 test_that("raster method is equivalent", {
@@ -569,7 +568,6 @@ test_that("units are handled properly", {
     vapply(ww_output$.grid, nrow, integer(1)),
     vapply(cellsizes, function(cellsize) length(sf::st_make_grid(pts, cellsize, square = FALSE)), integer(1))
   )
-
 })
 
 test_that("counts of non-NA values are correct", {
@@ -692,5 +690,90 @@ test_that("using protected names triggers errors", {
       square = FALSE,
       metrics = yardstick::rmse
     )
+  )
+})
+
+
+test_that("Data with an NA CRS works", {
+  pts <- sf::st_sample(
+    sf::st_as_sfc(
+      sf::st_bbox(
+        c(xmin = 1327326, ymin = 2175524, xmax = 1971106, ymax = 2651347)
+      )
+    ),
+    500
+  )
+
+  pts <- sf::st_as_sf(pts)
+  pts$truth <- rnorm(500, 123, 35)
+  pts$estimate <- rnorm(500, 123, 39)
+
+  expect_no_error(
+    waywiser::ww_multi_scale(
+      pts,
+      truth,
+      estimate,
+      cellsize = 20000,
+      square = FALSE,
+      metrics = yardstick::rmse
+    )
+  )
+})
+
+test_that("Passing crs via `...` warns", {
+  pts <- sf::st_sample(
+    sf::st_as_sfc(
+      sf::st_bbox(
+        c(xmin = 1327326, ymin = 2175524, xmax = 1971106, ymax = 2651347)
+      )
+    ),
+    500
+  )
+
+  pts <- sf::st_as_sf(pts)
+  pts$truth <- rnorm(500, 123, 35)
+  pts$estimate <- rnorm(500, 123, 39)
+
+  expect_warning(
+    waywiser::ww_multi_scale(
+      pts,
+      truth,
+      estimate,
+      cellsize = 20000,
+      square = FALSE,
+      metrics = yardstick::rmse,
+      crs = sf::st_crs(4326)
+    ),
+    "`crs` argument"
+  )
+})
+
+test_that("Passing arguments via `...` errors when using grids", {
+  pts <- sf::st_sample(
+    sf::st_as_sfc(
+      sf::st_bbox(
+        c(xmin = 1327326, ymin = 2175524, xmax = 1971106, ymax = 2651347)
+      )
+    ),
+    500
+  )
+
+  pts <- sf::st_as_sf(pts)
+  pts$truth <- rnorm(500, 123, 35)
+  pts$estimate <- rnorm(500, 123, 39)
+
+  grid <- sf::st_make_grid(pts, n = 4)
+
+  expect_error(
+    waywiser::ww_multi_scale(
+      pts,
+      truth,
+      estimate,
+      grids = list(grid),
+      square = FALSE,
+      metrics = yardstick::rmse,
+      crs = sf::st_crs(4326)
+    ),
+    class = "rlib_error_dots_nonempty"
   )
 })

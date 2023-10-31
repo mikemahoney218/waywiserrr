@@ -4,3 +4,12 @@
     Sys.setenv(RAYON_NUM_THREADS = 1)
   }
 }
+
+release_bullets <- function() {
+  c(
+    "`cffr::cff_write()`",
+    "`codemetar::write_codemeta()`",
+    "`styler::style_pkg()`",
+    "`Rscript inst/generate_srr.R`"
+  )
+}
